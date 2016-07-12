@@ -2,11 +2,13 @@ package maze;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.*;
 
 public class MazeApplet extends JApplet {
 	int size = 10, offset = 50;
 	int width = 500, height = 500;
+	boolean init = false;
 	
 	final static int White = 0;
 	final static int Gray = 1;
@@ -27,6 +29,7 @@ public class MazeApplet extends JApplet {
 	  
 
 	public MazeApplet() {
+		    
 		hasEastWall = new boolean[height/size][width/size];
 		hasSouthWall= new boolean[height/size][width/size];
 		color = new int[height/size][width/size];
@@ -43,7 +46,7 @@ public class MazeApplet extends JApplet {
 				if (c != 0) {neighbors[r][c].add(new Point(r,c-1));}
 				if (c != height/size - 1) {neighbors[r][c].add(new Point(r,c+1));}
 				
-				Collections.shuffle(neighbors[r][c]);
+			 	Collections.shuffle(neighbors[r][c]);
 			}
 		}
 		
@@ -55,8 +58,9 @@ public class MazeApplet extends JApplet {
 	    color[r][c] = Gray;
 	    while (!neighbors[r][c].isEmpty()) {
 	      Point cell = neighbors[r][c].remove();
+
 	      if (color[cell.x][cell.y] == White) {
-	        //clearWall(r,c, cell.x,cell.y);
+	        clearWall(r,c, cell.x,cell.y);
 	        dfsVisit(cell.x, cell.y);
 	      }
 	    }
@@ -64,6 +68,10 @@ public class MazeApplet extends JApplet {
 	  }
 	  
 	  public void paint(Graphics g) {
+		if (!init) {
+			this.setSize(600,600);
+			init = !init;
+		}
 	    g.drawLine(offset, offset, offset, offset+(height/size)*size);
 	    g.drawLine(offset, offset, offset + (width/size/2)*size, offset);
 	    g.drawLine(offset + size*(1+(width/size)/2), offset, offset+(width/size)*size, offset);
@@ -78,5 +86,12 @@ public class MazeApplet extends JApplet {
 	        }
 	      }
 	    }
+	  }
+	  
+	  public void pause() {
+
+		    try {
+		      System.in.read();
+		    } catch (IOException e) { }
 	  }
 }
