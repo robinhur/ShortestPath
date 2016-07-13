@@ -9,7 +9,8 @@ This project is learning about shortest path algorithm in java to find shortest 
 ##### July 12
   - Maze done!!!
   - generate maze with 50*50 size
-  - ![Generate Maze](https://raw.githubusercontent.com/robinhur/ShortestPath/master/Graph_Shortestpath/MazeApplet.png)
+  - ![Generate Maze](https://raw.githubusercontent.com/robinhur/ShortestPath/master/Graph_Shortestpath/MazeApplet.png)  
+  
 ##### July 11
   - first commit
   - done with Subway Matrix
