@@ -2,6 +2,10 @@
 This project is learning about shortest path algorithm in java to find shortest and finest route.
 
 # History
+##### July 17-18
+  - All implementation done
+  - Stylized Demonstration included
+
 ##### July 13-14
   - With maze, add 'find path' feature!!
   - maze path drawn with in rainbow color (dealt with hue)
